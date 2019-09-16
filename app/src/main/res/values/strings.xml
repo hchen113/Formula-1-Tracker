@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Formula 1 Tracker</string>
+    <string name="app_name">formula 1 tracker</string>
+    <string name="action_settings">Settings</string>
 </resources>
