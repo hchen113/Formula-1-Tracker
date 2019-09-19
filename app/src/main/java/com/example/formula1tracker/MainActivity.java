@@ -25,6 +25,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         public String team;
         public int points;
 
+
+        public driver(){
+
+        }
+
         public driver(String firstn, String lastn, String shorthandn, String nation, String t){
             firstname = firstn;
             lastname = lastn;
@@ -58,34 +64,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ArrayList<String> list_of_driver = new ArrayList<String>();
-    ArrayList<driver> driversList = new ArrayList<driver>();
-
     driver HAM = new driver("Lewis", "Hamilton", "HAM", "GBR", "Mercedes");
     driver BOT = new driver("Valtteri", "Bottas", "BOT", "FIN", "Mercedes");
     driver VER = new driver("Max", "Verstappen", "VER", "NED", "Red Bull Racing Honda");
-
-    driversList.add(HAM);
-
-
+    driver LEC = new driver("Charles", "Leclerc", "LEC", "MON", "Ferrari");
+    driver VET = new driver("Sebastian", "Vettel", "VET", "GER", "Ferrari");
+    driver GAS = new driver("Pierre", "Gasly", "GAS", "FRA", "Scuderia Toro Rosso Honda");
+    driver SAI = new driver("Carlos", "Sainz", "SAI", "ESP", "McLaren Renault");
+    driver RIC = new driver("Daniel", "Ricciardo", "RIC", "AUS", "Renault");
+    driver ALB = new driver("Alexander", "Albon", "ALB", "THA", "Red Bull Racing Honda");
+    driver KVY = new driver("Daniil", "Kvyat", "KVY", "RUS", "Scuderia Toro Rosso Honda");
+    driver HUL = new driver("Nico", "Hulkenberg", "HUL", "GER", "Renault");
+    driver RAI = new driver("Kimi", "Räikkönen", "RAI", "FIN", "Alfa Romeo Racing Ferrari");
+    driver PER = new driver("Sergio", "Perez", "PER", "MEX", "Racing Point BWT Mercedes");
+    driver NOR = new driver("Lando", "Norris", "NOR", "GBR", "McLaren Renault");
+    driver STR = new driver("Lance", "Stroll", "STR", "CAN", "Racing Point BWT Mercedes");
+    driver MAG = new driver("Kevin", "Magnussen", "MAG", "DEN", "Haas Ferrari");
+    driver GRO = new driver("Romain", "Grosjean", "GRO", "FRA", "Haas Ferrari");
+    driver GIO = new driver("Antonio", "Giovinazzi", "GIO", "ITA", "Alfa Romeo Racing Ferrari");
+    driver KUB = new driver("Robert", "Kubica", "KUB", "POL", "Williams Mercedes");
+    driver RUS = new driver("George", "Russell", "RUS", "POL", "Williams Mercedes");
+    List<driver> drivers = Arrays.asList(HAM, BOT, VER, LEC, VET, GAS, SAI, RIC, ALB, KVY, HUL, RAI, PER, NOR, STR, MAG, GRO, GIO, KUB, RUS);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        for (String s : list_of_driver){
-            driver temp = new driver();
-            int counter = 0;
-            StringBuilder temp_word = new StringBuilder();
-
-
-            for (int i = 0; i < s.length(); i++){
-                char c = s.charAt(i);
-                temp_word.append(c);
-            }
-
-
-        }
 
         output = findViewById(R.id.output);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -93,15 +98,25 @@ public class MainActivity extends AppCompatActivity {
         output.setText("WORKING");
         new Content().execute();
 
+        for (String s : list_of_driver){
+            for (driver d : drivers){
+                if (s.contains(d.firstname)){
+                    String lastWord = s.substring(s.lastIndexOf(" ")+1);
+                    int points = Integer.parseInt(lastWord);
+                    d.points = points;
+                }
+            }
+        }
         fab.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
-
+            output.setText(VER.points);
 
             }
         });
     }
+
     private class Content extends AsyncTask<Void, Void, Void>  {
 
         @Override
