@@ -25,12 +25,12 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    int counter = 0;
     String url = "https://www.formula1.com/en/results.html/2019/drivers.html";
     Document document = null;
     TextView output = null;
@@ -46,9 +46,25 @@ public class MainActivity extends AppCompatActivity {
         public String nationality;
         public String team;
         public int points;
+
+        public driver(String firstn, String lastn, String shorthandn, String nation, String t){
+            firstname = firstn;
+            lastname = lastn;
+            shorthandname = shorthandn;
+            nationality = nation;
+            team = t;
+
+        }
     }
 
     ArrayList<String> list_of_driver = new ArrayList<String>();
+    ArrayList<driver> driversList = new ArrayList<driver>();
+
+    driver HAM = new driver("Lewis", "Hamilton", "HAM", "GBR", "Mercedes");
+    driver BOT = new driver("Valtteri", "Bottas", "BOT", "FIN", "Mercedes");
+    driver VER = new driver("Max", "Verstappen", "VER", "NED", "Red Bull Racing Honda");
+
+    drivers
 
 
     @Override
@@ -56,32 +72,32 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        for (String s : list_of_driver){
+            driver temp = new driver();
+            int counter = 0;
+            StringBuilder temp_word = new StringBuilder();
+
+
+            for (int i = 0; i < s.length(); i++){
+                char c = s.charAt(i);
+                temp_word.append(c);
+            }
+
+
+        }
 
         output = findViewById(R.id.output);
         FloatingActionButton fab = findViewById(R.id.fab);
 
-
-
-        /*Elements elements = document.select("div.limiter");
-
-        String driver = "LEWIS";
-
-
-        output.setText(document.title());*/
+        output.setText("WORKING");
+        new Content().execute();
 
         fab.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                output.setText("WORKING");
-                new Content().execute();
 
-                for (String s : list_of_driver){
-                    output.setText(s);
-                    pause(1000);
-                }
 
-                /*counter ++;
-                output.setText(Integer.toString(counter));*/
+
             }
         });
     }
@@ -116,11 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
                     list_of_driver.add(e.text());
 
-                }
-
-                for (String s : list_of_driver){
-                    output.setText(s);
-                    pause(1000);
                 }
             }else{
                 output.setText("CONNECTION ERROR.");
