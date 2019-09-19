@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
     driver BOT = new driver("Valtteri", "Bottas", "BOT", "FIN", "Mercedes");
     driver VER = new driver("Max", "Verstappen", "VER", "NED", "Red Bull Racing Honda");
 
-    drivers
+    driversList.add(HAM);
+
 
 
     @Override
