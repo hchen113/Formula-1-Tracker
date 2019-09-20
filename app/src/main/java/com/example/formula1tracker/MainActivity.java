@@ -98,20 +98,19 @@ public class MainActivity extends AppCompatActivity {
         output.setText("WORKING");
         new Content().execute();
 
-        for (String s : list_of_driver){
-            for (driver d : drivers){
-                if (s.contains(d.firstname)){
-                    String lastWord = s.substring(s.lastIndexOf(" ")+1);
-                    int points = Integer.parseInt(lastWord);
-                    d.points = points;
-                }
-            }
-        }
+
+
+
         fab.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
-            output.setText(VER.points);
+                //output.setText("TEST");
+                //output.setText(Integer.toString(ALB.points));
+                output.setText(Integer.toString(VER.points));
+                //output.setText(ALB.points);
+
+
 
             }
         });
@@ -149,6 +148,26 @@ public class MainActivity extends AppCompatActivity {
                     list_of_driver.add(e.text());
 
                 }
+
+                Log.d("WINNIE", "onCreate:  BEFORE LOOP");
+                for (String s : list_of_driver){
+
+                    Log.d("WINNIE", s);
+                    for (driver d : drivers){
+                        if (s.contains(d.firstname)){
+                            int i = s.indexOf(' ');
+                            String firstWord = s.substring(0, i);
+                            String lastWord = s.substring(s.lastIndexOf(" ")+1);
+                            int position = Integer.parseInt(firstWord);
+                            int points = Integer.parseInt(lastWord);
+                            d.position = position;
+                            d.points = points;
+                            //output.setText("ADDED POINTS TO " + d.firstname);
+                        }
+                    }
+                }
+
+                Log.d("WINNIE", "onCreate:  AFTER LOOP");
             }else{
                 output.setText("CONNECTION ERROR.");
             }

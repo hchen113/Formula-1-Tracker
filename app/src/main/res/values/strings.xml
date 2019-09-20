@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">formula 1 tracker</string>
     <string name="action_settings">Settings</string>
+    <string-array name="names">
+        <item>Albon</item>
+        <item>Bottas</item>
+        <item>Gasly</item>
+        <item>Giovinazzi</item>
+        <item>Grosjean</item>
+        <item>Hamilton</item>
+        <item>Hulkenberg</item>
+        <item>Kubica</item>
+        <item>Kvyat</item>
+        <item>Leclerc</item>
+        <item>Magnussen</item>
+        <item>Norris</item>
+        <item>Perez</item>
+        <item>Ricciardo</item>
+        <item>Russell</item>
+        <item>Räikkönen</item>
+        <item>Sainz</item>
+        <item>Stroll</item>
+        <item>Verstappen</item>
+        <item>Vettel</item>
+    </string-array>
 </resources>
