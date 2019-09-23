@@ -1,0 +1,369 @@
+commit 43a3bd27583c113611eb1443a0ff399d715b44be
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Mon Sep 23 01:08:18 2019 -0400
+
+    SurfaceView and ListView
+
+ .DS_Store                                          | Bin 6148 -> 8196 bytes
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 4044017 -> 5096741 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 278819 -> 286519 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 24141 -> 24379 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 1326239 -> 1458803 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .idea/workspace.xml                                | 298 ++++++++++++++-------
+ app/app.iml                                        |   2 +-
+ .../com/example/formula1tracker/MainActivity.java  | 143 ++++++++--
+ .../com/example/formula1tracker/MySurfaceView.java |  87 ++++++
+ .../java/com/example/formula1tracker/RowItem.java  |  42 +++
+ .../example/formula1tracker/customerAdapter.java   |  73 +++++
+ .../drawable/{f1_cars/ferrari.png => Ferrari.png}  | Bin
+ .../{f1_cars/mercedes.png => Mercedes.png}         | Bin
+ app/src/main/res/drawable/albon.jpg                | Bin 0 -> 394427 bytes
+ .../alfa.png => alfa_romeo_racing_ferrari.png}     | Bin
+ app/src/main/res/drawable/bottas.jpg               | Bin 0 -> 424551 bytes
+ app/src/main/res/drawable/gasly.jpg                | Bin 0 -> 424819 bytes
+ app/src/main/res/drawable/giovinazzi.jpg           | Bin 0 -> 378153 bytes
+ app/src/main/res/drawable/grosjean.jpg             | Bin 0 -> 417126 bytes
+ .../{f1_cars/haas.png => haas_ferrari.png}         | Bin
+ app/src/main/res/drawable/hamilton.jpg             | Bin 0 -> 419991 bytes
+ app/src/main/res/drawable/hulkenberg.jpg           | Bin 0 -> 415828 bytes
+ app/src/main/res/drawable/kubica.jpg               | Bin 0 -> 394346 bytes
+ app/src/main/res/drawable/kvyat.jpg                | Bin 0 -> 364345 bytes
+ app/src/main/res/drawable/leclerc.jpg              | Bin 0 -> 401770 bytes
+ app/src/main/res/drawable/magnussen.jpg            | Bin 0 -> 420758 bytes
+ .../{f1_cars/mclaren.png => mclaren_renault.png}   | Bin
+ app/src/main/res/drawable/norris.jpg               | Bin 0 -> 384231 bytes
+ app/src/main/res/drawable/perez.jpg                | Bin 0 -> 415878 bytes
+ ...cingpoint.png => racing_point_bwt_mercedes.png} | Bin
+ app/src/main/res/drawable/raikkonen.jpg            | Bin 0 -> 463992 bytes
+ .../redbull.png => red_bull_racing_honda.png}      | Bin
+ .../drawable/{f1_cars/renualt.png => renault.png}  | Bin
+ app/src/main/res/drawable/riccardo.jpg             | Bin 0 -> 377629 bytes
+ app/src/main/res/drawable/russell.jpg              | Bin 0 -> 383779 bytes
+ app/src/main/res/drawable/sainz.jpg                | Bin 0 -> 427066 bytes
+ .../torro.png => scuderia_toro_rosso_honda.png}    | Bin
+ app/src/main/res/drawable/stroll.jpg               | Bin 0 -> 401171 bytes
+ app/src/main/res/drawable/verstappen.jpg           | Bin 0 -> 385990 bytes
+ app/src/main/res/drawable/vettel.jpg               | Bin 0 -> 435843 bytes
+ .../williams.png => williams_mercedes.png}         | Bin
+ app/src/main/res/layout/activity_main.xml          |  62 +++--
+ app/src/main/res/layout/content_main.xml           |   3 +
+ app/src/main/res/layout/list_item.xml              |  41 +++
+ app/src/main/res/values/strings.xml                |  49 ++++
+ 49 files changed, 661 insertions(+), 139 deletions(-)
+
+commit 6bf5eb88aaf69242ce0749e472004dfa26d850e7
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Fri Sep 20 10:35:45 2019 -0400
+
+    got the jsoup data to work, now working on UI
+
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 4044017 -> 4044017 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 278669 -> 278819 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 24107 -> 24141 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 1250693 -> 1326239 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/5.4.1/javaCompile/taskHistory.bin          | Bin 65961 -> 65961 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .idea/caches/build_file_checksums.ser              | Bin 537 -> 535 bytes
+ .idea/caches/gradle_models.ser                     | Bin 159784 -> 162423 bytes
+ .idea/workspace.xml                                | 167 +++++++++++++++------
+ app/app.iml                                        |   2 +-
+ .../com/example/formula1tracker/MainActivity.java  |  39 +++--
+ app/src/main/res/layout/activity_main.xml          |  45 +++---
+ app/src/main/res/values/strings.xml                |  22 +++
+ local.properties                                   |   4 +-
+ 17 files changed, 192 insertions(+), 87 deletions(-)
+
+commit 1c175e3291514f351c3d4a5dd286ef97db7d8e6b
+Author: hchen113 <hchen113@binghamton.edu>
+Date:   Thu Sep 19 00:21:11 2019 -0400
+
+    List of all drivers
+
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 4044017 -> 4044017 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 149233 -> 278669 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 24039 -> 24107 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 890610 -> 1250693 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/5.4.1/javaCompile/taskHistory.bin          | Bin 65961 -> 65961 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .gradle/buildOutputCleanup/outputFiles.bin         | Bin 25463 -> 99269 bytes
+ .idea/caches/build_file_checksums.ser              | Bin 535 -> 537 bytes
+ .idea/caches/gradle_models.ser                     | Bin 162423 -> 159784 bytes
+ .idea/workspace.xml                                | 179 ++++++++-------------
+ app/app.iml                                        |   2 +-
+ .../com/example/formula1tracker/MainActivity.java  |  55 ++++---
+ local.properties                                   |   8 +-
+ 16 files changed, 110 insertions(+), 134 deletions(-)
+
+commit fdc26cdc4066423053aeee9cb7e05dfbfbb96f27
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Wed Sep 18 23:23:15 2019 -0400
+
+    update
+
+ .idea/workspace.xml                                | 28 ++++++++--------------
+ .../com/example/formula1tracker/MainActivity.java  |  3 ++-
+ 2 files changed, 12 insertions(+), 19 deletions(-)
+
+commit d265150f3d0d69cfd237dd3ec820bb81032e1bd3
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Wed Sep 18 23:08:57 2019 -0400
+
+    List of drivers in array
+
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 4044017 -> 4044017 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 149233 -> 149233 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 885430 -> 890610 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .idea/workspace.xml                                |  91 ++++++++-------------
+ .../com/example/formula1tracker/MainActivity.java  |  51 +++++++-----
+ app/src/main/res/layout/activity_main.xml          |  27 +++++-
+ 10 files changed, 93 insertions(+), 76 deletions(-)
+
+commit 8dec5f20f2df6ea5bd77772429a3a9f9e43780ed
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Wed Sep 18 14:11:00 2019 -0400
+
+    jsoup working
+
+ .DS_Store                                          | Bin 10244 -> 6148 bytes
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 3031634 -> 4044017 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 134283 -> 149233 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 23903 -> 24039 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 640130 -> 885430 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/5.4.1/javaCompile/taskHistory.bin          | Bin 31085 -> 65961 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .gradle/buildOutputCleanup/outputFiles.bin         | Bin 25283 -> 25463 bytes
+ .idea/caches/build_file_checksums.ser              | Bin 535 -> 535 bytes
+ .idea/caches/gradle_models.ser                     | Bin 161819 -> 162423 bytes
+ .idea/workspace.xml                                | 336 ++++++++++++++++++++-
+ Formula 1 Tracker.iml                              |   3 +-
+ app/app.iml                                        |   3 +-
+ app/build.gradle                                   |   3 +-
+ app/libs/jsoup-1.12.1.jar                          | Bin 0 -> 397112 bytes
+ app/src/main/AndroidManifest.xml                   |   8 +-
+ .../com/example/formula1tracker/MainActivity.java  | 117 ++++++-
+ app/src/main/res/drawable/f1_cars/alfa.png         | Bin 0 -> 62956 bytes
+ app/src/main/res/drawable/f1_cars/ferrari.png      | Bin 0 -> 47445 bytes
+ app/src/main/res/drawable/f1_cars/haas.png         | Bin 0 -> 40450 bytes
+ app/src/main/res/drawable/f1_cars/mclaren.png      | Bin 0 -> 68329 bytes
+ app/src/main/res/drawable/f1_cars/mercedes.png     | Bin 0 -> 67613 bytes
+ app/src/main/res/drawable/f1_cars/racingpoint.png  | Bin 0 -> 74365 bytes
+ app/src/main/res/drawable/f1_cars/redbull.png      | Bin 0 -> 60240 bytes
+ app/src/main/res/drawable/f1_cars/renualt.png      | Bin 0 -> 60624 bytes
+ app/src/main/res/drawable/f1_cars/torro.png        | Bin 0 -> 77167 bytes
+ app/src/main/res/drawable/f1_cars/williams.png     | Bin 0 -> 57517 bytes
+ app/src/main/res/drawable/f1_drivers/albon.jpg     | Bin 0 -> 394427 bytes
+ app/src/main/res/drawable/f1_drivers/bottas.jpg    | Bin 0 -> 424551 bytes
+ app/src/main/res/drawable/f1_drivers/gasly.jpg     | Bin 0 -> 424819 bytes
+ .../main/res/drawable/f1_drivers/giovinazzi.jpg    | Bin 0 -> 378153 bytes
+ app/src/main/res/drawable/f1_drivers/grosjean.jpg  | Bin 0 -> 417126 bytes
+ app/src/main/res/drawable/f1_drivers/hamilton.jpg  | Bin 0 -> 419991 bytes
+ .../main/res/drawable/f1_drivers/hulkenberg.jpg    | Bin 0 -> 415828 bytes
+ app/src/main/res/drawable/f1_drivers/kubica.jpg    | Bin 0 -> 394346 bytes
+ app/src/main/res/drawable/f1_drivers/kvyat.jpg     | Bin 0 -> 364345 bytes
+ app/src/main/res/drawable/f1_drivers/leclerc.jpg   | Bin 0 -> 401770 bytes
+ app/src/main/res/drawable/f1_drivers/magnussen.jpg | Bin 0 -> 420758 bytes
+ app/src/main/res/drawable/f1_drivers/norris.jpg    | Bin 0 -> 384231 bytes
+ app/src/main/res/drawable/f1_drivers/perez.jpg     | Bin 0 -> 415878 bytes
+ app/src/main/res/drawable/f1_drivers/raikkonen.jpg | Bin 0 -> 463992 bytes
+ app/src/main/res/drawable/f1_drivers/riccardo.jpg  | Bin 0 -> 377629 bytes
+ app/src/main/res/drawable/f1_drivers/russell.jpg   | Bin 0 -> 383779 bytes
+ app/src/main/res/drawable/f1_drivers/sainz.jpg     | Bin 0 -> 427066 bytes
+ app/src/main/res/drawable/f1_drivers/stroll.jpg    | Bin 0 -> 401171 bytes
+ .../main/res/drawable/f1_drivers/verstappen.jpg    | Bin 0 -> 385990 bytes
+ app/src/main/res/drawable/f1_drivers/vettel.jpg    | Bin 0 -> 435843 bytes
+ app/src/main/res/drawable/f1_logo.png              | Bin 0 -> 5841 bytes
+ app/src/main/res/layout/activity_main.xml          |  29 +-
+ app/src/main/res/layout/content_main.xml           |   2 +-
+ 53 files changed, 481 insertions(+), 20 deletions(-)
+
+commit f26656b31aac6410add7d48af8e7b0a9196884c8
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Mon Sep 16 12:29:52 2019 -0400
+
+    Changed to project to have FAB
+
+ .DS_Store                                          | Bin 8196 -> 10244 bytes
+ .gitignore                                         |  14 ++
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 1312928 -> 3031634 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 127883 -> 134283 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 17 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 18565 -> 23903 bytes
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 453287 -> 640130 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 17 -> 17 bytes
+ .gradle/5.4.1/javaCompile/taskHistory.bin          | Bin 22451 -> 31085 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 17 -> 17 bytes
+ .gradle/buildOutputCleanup/outputFiles.bin         | Bin 23951 -> 25283 bytes
+ .idea/.name                                        |   2 +-
+ .idea/caches/build_file_checksums.ser              | Bin 535 -> 535 bytes
+ .idea/caches/gradle_models.ser                     | Bin 118400 -> 161819 bytes
+ ...ayoutinflater_asynclayoutinflater_1_0_0_aar.xml |  12 ++
+ ...radle__androidx_cardview_cardview_1_0_0_aar.xml |  12 ++
+ ...ordinatorlayout_coordinatorlayout_1_0_0_aar.xml |  15 ++
+ ...ndroidx_documentfile_documentfile_1_0_0_aar.xml |  12 ++
+ ...idx_legacy_legacy_support_core_ui_1_0_0_aar.xml |  12 ++
+ ..._legacy_legacy_support_core_utils_1_0_0_aar.xml |  12 ++
+ ...castmanager_localbroadcastmanager_1_0_0_aar.xml |  12 ++
+ .../Gradle__androidx_print_print_1_0_0_aar.xml     |  15 ++
+ ...ndroidx_recyclerview_recyclerview_1_0_0_aar.xml |  15 ++
+ ...idingpanelayout_slidingpanelayout_1_0_0_aar.xml |  12 ++
+ ...erefreshlayout_swiperefreshlayout_1_0_0_aar.xml |  15 ++
+ ...e__androidx_transition_transition_1_0_0_aar.xml |  15 ++
+ ..._google_android_material_material_1_0_0_aar.xml |  13 ++
+ .idea/modules.xml                                  |   2 +-
+ .idea/workspace.xml                                |   8 +-
+ Formula 1 Tracker.iml                              |   5 +-
+ app/.DS_Store                                      | Bin 8196 -> 0 bytes
+ app/app.iml                                        |  17 +-
+ app/build.gradle                                   |   1 +
+ .../formula1tracker/ExampleInstrumentedTest.java   |   1 +
+ app/src/main/AndroidManifest.xml                   |   9 +-
+ .../com/example/formula1tracker/MainActivity.java  |  44 +++-
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  12 +-
+ .../main/res/drawable/ic_launcher_background.xml   | 236 +++++++++++++++------
+ app/src/main/res/layout/activity_main.xml          |  34 ++-
+ app/src/main/res/layout/content_main.xml           |  20 ++
+ app/src/main/res/menu/menu_main.xml                |  10 +
+ app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   4 +-
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   4 +-
+ app/src/main/res/values/dimens.xml                 |   3 +
+ app/src/main/res/values/strings.xml                |   3 +-
+ app/src/main/res/values/styles.xml                 |   9 +
+ gradle.properties                                  |   5 -
+ gradle/wrapper/gradle-wrapper.properties           |   2 +-
+ settings.gradle                                    |   2 +-
+ 50 files changed, 506 insertions(+), 113 deletions(-)
+
+commit b17063f1c7e2d4d26e5bd70dd8642592f14ff3e8
+Author: hchen113 <hchen113@binghamton.edu>
+Date:   Fri Sep 13 10:37:26 2019 -0400
+
+    Create README.md
+
+ README.md | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 731061a8f601f3e13e60707e050f579464779035
+Author: Henry Chen <hchen113@binghamton.edu>
+Date:   Fri Sep 13 10:36:28 2019 -0400
+
+    Initialized Empty Project
+
+ .DS_Store                                          | Bin 0 -> 8196 bytes
+ .../5.4.1/executionHistory/executionHistory.bin    | Bin 0 -> 1312928 bytes
+ .../5.4.1/executionHistory/executionHistory.lock   | Bin 0 -> 17 bytes
+ .gradle/5.4.1/fileChanges/last-build.bin           | Bin 0 -> 1 bytes
+ .gradle/5.4.1/fileContent/fileContent.lock         | Bin 0 -> 17 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.bin            | Bin 0 -> 127883 bytes
+ .gradle/5.4.1/fileHashes/fileHashes.lock           | Bin 0 -> 17 bytes
+ .gradle/5.4.1/fileHashes/resourceHashesCache.bin   | Bin 0 -> 18565 bytes
+ .gradle/5.4.1/gc.properties                        |   0
+ .gradle/5.4.1/javaCompile/classAnalysis.bin        | Bin 0 -> 453287 bytes
+ .gradle/5.4.1/javaCompile/javaCompile.lock         | Bin 0 -> 17 bytes
+ .gradle/5.4.1/javaCompile/taskHistory.bin          | Bin 0 -> 22451 bytes
+ .gradle/buildOutputCleanup/buildOutputCleanup.lock | Bin 0 -> 17 bytes
+ .gradle/buildOutputCleanup/cache.properties        |   2 +
+ .gradle/buildOutputCleanup/outputFiles.bin         | Bin 0 -> 23951 bytes
+ .gradle/vcs-1/gc.properties                        |   0
+ .idea/.name                                        |   1 +
+ .idea/caches/build_file_checksums.ser              | Bin 0 -> 535 bytes
+ .idea/caches/gradle_models.ser                     | Bin 0 -> 118400 bytes
+ .idea/codeStyles/Project.xml                       | 116 ++++++++++++++
+ .idea/gradle.xml                                   |  16 ++
+ ...radle__androidx_activity_activity_1_0_0_aar.xml |  12 ++
+ ...e__androidx_annotation_annotation_1_1_0_jar.xml |  13 ++
+ ...dle__androidx_appcompat_appcompat_1_1_0_aar.xml |  15 ++
+ ...idx_appcompat_appcompat_resources_1_1_0_aar.xml |  12 ++
+ ...e__androidx_arch_core_core_common_2_1_0_jar.xml |  11 ++
+ ...__androidx_arch_core_core_runtime_2_0_0_aar.xml |  12 ++
+ ...e__androidx_collection_collection_1_1_0_jar.xml |  11 ++
+ ...constraintlayout_constraintlayout_1_1_3_aar.xml |  10 ++
+ ...intlayout_constraintlayout_solver_1_1_3_jar.xml |   9 ++
+ .../Gradle__androidx_core_core_1_1_0_aar.xml       |  15 ++
+ ...roidx_cursoradapter_cursoradapter_1_0_0_aar.xml |  12 ++
+ ...e__androidx_customview_customview_1_0_0_aar.xml |  12 ++
+ ...ndroidx_drawerlayout_drawerlayout_1_0_0_aar.xml |  15 ++
+ ...radle__androidx_fragment_fragment_1_1_0_aar.xml |  15 ++
+ ...ndroidx_interpolator_interpolator_1_0_0_aar.xml |  12 ++
+ ...droidx_lifecycle_lifecycle_common_2_1_0_jar.xml |  11 ++
+ ...oidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml |  12 ++
+ ...lifecycle_lifecycle_livedata_core_2_0_0_aar.xml |  12 ++
+ ...roidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml |  12 ++
+ ...idx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml |  12 ++
+ .../Gradle__androidx_loader_loader_1_0_0_aar.xml   |  12 ++
+ ...e__androidx_savedstate_savedstate_1_0_0_aar.xml |  12 ++
+ ...roidx_test_espresso_espresso_core_3_2_0_aar.xml |  14 ++
+ ...espresso_espresso_idling_resource_3_2_0_aar.xml |  14 ++
+ .../Gradle__androidx_test_monitor_1_2_0_aar.xml    |  14 ++
+ .../Gradle__androidx_test_runner_1_2_0_aar.xml     |  14 ++
+ ...idx_vectordrawable_vectordrawable_1_1_0_aar.xml |  12 ++
+ ...rdrawable_vectordrawable_animated_1_1_0_aar.xml |  12 ++
+ ...nedparcelable_versionedparcelable_1_1_0_aar.xml |  12 ++
+ ...dle__androidx_viewpager_viewpager_1_0_0_aar.xml |  12 ++
+ ...__com_google_code_findbugs_jsr305_2_0_1_jar.xml |   9 ++
+ .../Gradle__com_squareup_javawriter_2_1_1_jar.xml  |  13 ++
+ .../Gradle__javax_inject_javax_inject_1_jar.xml    |  13 ++
+ .idea/libraries/Gradle__junit_junit_4_12_jar.xml   |  13 ++
+ .../Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml        |  13 ++
+ .../Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml |  13 ++
+ ...__org_hamcrest_hamcrest_integration_1_3_jar.xml |  13 ++
+ ...adle__org_hamcrest_hamcrest_library_1_3_jar.xml |  13 ++
+ .idea/misc.xml                                     |   9 ++
+ .idea/modules.xml                                  |   9 ++
+ .idea/runConfigurations.xml                        |  12 ++
+ .idea/vcs.xml                                      |   6 +
+ .idea/workspace.xml                                |  77 +++++++++
+ Formula 1 Tracker.iml                              |  19 +++
+ app/.DS_Store                                      | Bin 0 -> 8196 bytes
+ app/.gitignore                                     |   1 +
+ app/app.iml                                        | 131 ++++++++++++++++
+ app/build.gradle                                   |  29 ++++
+ app/proguard-rules.pro                             |  21 +++
+ .../formula1tracker/ExampleInstrumentedTest.java   |  26 ++++
+ app/src/main/AndroidManifest.xml                   |  21 +++
+ .../com/example/formula1tracker/MainActivity.java  |  13 ++
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 ++++
+ .../main/res/drawable/ic_launcher_background.xml   |  74 +++++++++
+ app/src/main/res/layout/activity_main.xml          |  19 +++
+ app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 +
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 +
+ app/src/main/res/mipmap-hdpi/ic_launcher.png       | Bin 0 -> 2963 bytes
+ app/src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 0 -> 4905 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher.png       | Bin 0 -> 2060 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 0 -> 2783 bytes
+ app/src/main/res/mipmap-xhdpi/ic_launcher.png      | Bin 0 -> 4490 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 0 -> 6895 bytes
+ app/src/main/res/mipmap-xxhdpi/ic_launcher.png     | Bin 0 -> 6387 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 0 -> 10413 bytes
+ app/src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 0 -> 9128 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 0 -> 15132 bytes
+ app/src/main/res/values/colors.xml                 |   6 +
+ app/src/main/res/values/strings.xml                |   3 +
+ app/src/main/res/values/styles.xml                 |  11 ++
+ .../example/formula1tracker/ExampleUnitTest.java   |  17 ++
+ build.gradle                                       |  27 ++++
+ gradle.properties                                  |  25 +++
+ gradle/wrapper/gradle-wrapper.jar                  | Bin 0 -> 54329 bytes
+ gradle/wrapper/gradle-wrapper.properties           |   6 +
+ gradlew                                            | 172 +++++++++++++++++++++
+ gradlew.bat                                        |  84 ++++++++++
+ local.properties                                   |  10 ++
+ settings.gradle                                    |   2 +
+ 100 files changed, 1482 insertions(+)
