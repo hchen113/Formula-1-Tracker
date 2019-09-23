@@ -6,52 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#DD131212"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/toolbar_f1_logo"
-            android:layout_width="73dp"
-            android:layout_height="82dp"
-            android:contentDescription="logo"
-            android:src="@drawable/f1_logo"
-            android:translationX="10dp">
-
-        </ImageView>
-
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#DD131212"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <ImageView
+                android:id="@+id/toolbar_f1_logo"
+                android:layout_width="73dp"
+                android:layout_height="82dp"
+                android:src="@drawable/f1_logo"
+                android:translationX="10dp">
+
+            </ImageView>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/customViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/appBarLayout"
             android:orientation="vertical">
-
-            <SurfaceView
-                android:id="@+id/surface_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </SurfaceView>
-
-            <ListView
-                android:id="@+id/driver_list_view"
-                android:layout_width="match_parent"
-                android:layout_height="632dp"
-                android:entries="@array/names">
-
-            </ListView>
-
 
         </LinearLayout>
 
+        <ListView
+            android:id="@+id/driver_list_view"
+            android:layout_below="@id/customViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:background="#DD131212">
 
-    </com.google.android.material.appbar.AppBarLayout>
+        </ListView>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
+    </RelativeLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

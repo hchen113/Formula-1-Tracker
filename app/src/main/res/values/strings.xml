@@ -23,4 +23,53 @@
         <item>Verstappen</item>
         <item>Vettel</item>
     </string-array>
+
+    <array name="car_pics">
+        <item>@drawable/red_bull_racing_honda</item>
+        <item>@drawable/mercedes</item>
+        <item>@drawable/scuderia_toro_rosso_honda</item>
+        <item>@drawable/alfa_romeo_racing_ferrari</item>
+        <item>@drawable/haas_ferrari</item>
+        <item>@drawable/mercedes</item>
+        <item>@drawable/renault</item>
+        <item>@drawable/williams_mercedes</item>
+        <item>@drawable/scuderia_toro_rosso_honda</item>
+        <item>@drawable/ferrari</item>
+        <item>@drawable/haas_ferrari</item>
+        <item>@drawable/mclaren_renault</item>
+        <item>@drawable/racing_point_bwt_mercedes</item>
+        <item>@drawable/alfa_romeo_racing_ferrari</item>
+        <item>@drawable/renault</item>
+        <item>@drawable/williams_mercedes</item>
+        <item>@drawable/mclaren_renault</item>
+        <item>@drawable/racing_point_bwt_mercedes</item>
+        <item>@drawable/red_bull_racing_honda</item>
+        <item>@drawable/ferrari</item>
+
+
+    </array>
+
+    <array name="driver_profile_pic">
+        <item>@drawable/albon</item>
+        <item>@drawable/bottas</item>
+        <item>@drawable/gasly</item>
+        <item>@drawable/giovinazzi</item>
+        <item>@drawable/grosjean</item>
+        <item>@drawable/hamilton</item>
+        <item>@drawable/hulkenberg</item>
+        <item>@drawable/kubica</item>
+        <item>@drawable/kvyat</item>
+        <item>@drawable/leclerc</item>
+        <item>@drawable/magnussen</item>
+        <item>@drawable/norris</item>
+        <item>@drawable/perez</item>
+        <item>@drawable/raikkonen</item>
+        <item>@drawable/riccardo</item>
+        <item>@drawable/russell</item>
+        <item>@drawable/sainz</item>
+        <item>@drawable/stroll</item>
+        <item>@drawable/verstappen</item>
+        <item>@drawable/vettel</item>
+    </array>
+
 </resources>
